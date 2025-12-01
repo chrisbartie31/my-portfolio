@@ -2,54 +2,62 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail, Code2, Terminal } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, Code2, Smartphone, Layout } from "lucide-react";
 
 // --- Types ---
 interface Project {
   id: number;
   title: string;
   category: string;
-  tech: string; // Added a tech field to show languages
+  tech: string;
   description: string;
   color: string;
   size: string;
+  link: string;
 }
 
 // --- Configuration ---
 const personalInfo = {
-  name: "Chris",
-  title: "Junior Software Developer",
-  // I expanded your bio to emphasize "Real World Problems"
-  bio: "I build robust applications and websites designed to solve real-world problems. My focus is on creating practical, efficient software solutions using C#, .NET, and modern mobile frameworks.",
+  name: "Chris Bartie", // Updated to full name
+  title: "Front-End & Mobile Developer",
+  bio: "I specialize in building high-quality mobile applications and responsive web interfaces. With a strong foundation in JavaScript, React, and React Native, I focus on crafting intuitive user experiences and pixel-perfect designs.",
+  socials: {
+    github: "https://github.com/chrisbartie31",
+    linkedin: "https://www.linkedin.com/in/chris-bartie-169260275",
+    email: "mailto:chrisbartie31@gmail.com" // Updated email
+  }
 };
 
 const projects: Project[] = [
   {
     id: 1,
     title: "Brightsteps",
-    category: "Mobile Application",
+    category: "Mobile Engineering",
     tech: "React Native",
-    description: "My debut application. A comprehensive mobile platform designed to bridge the gap between tutors and students.",
+    description: "A cross-platform mobile application connecting tutors and students. Features a custom-built scheduling interface and real-time state management.",
     color: "bg-blue-600",
-    size: "col-span-1 md:col-span-2", // Wide tile for your main project
+    size: "col-span-1 md:col-span-2",
+    link: "https://github.com/chrisbartie31/BrightSteps",
   },
   {
     id: 2,
     title: "Recipe Manager",
-    category: "Desktop Software",
+    category: "UI Architecture",
     tech: "C# / WPF",
-    description: "A centralized recipe storage system with a custom UI.",
+    description: "Designing complex desktop interfaces. This project focuses on efficient data binding and a clean, user-friendly visual layout.",
     color: "bg-emerald-600",
-    size: "col-span-1", // Small tile
+    size: "col-span-1",
+    link: "https://github.com/chrisbartie31/recipe_manager",
   },
   {
     id: 3,
     title: "Municipal Services Portal",
-    category: "System Architecture",
-    tech: "C#",
-    description: "A management portal streamlining city services and citizen reporting to solve community infrastructure challenges.",
+    category: "Web Interface",
+    tech: "C# / MVC",
+    description: "A large-scale portal focusing on accessible web design and streamlined user flows for public services.",
     color: "bg-orange-600",
-    size: "col-span-1 md:col-span-3", // Full width tile to show importance
+    size: "col-span-1 md:col-span-3",
+    link: "https://github.com/chrisbartie31/municipality_portal", 
   },
 ];
 
@@ -58,7 +66,7 @@ const projects: Project[] = [
 const Navbar = () => (
   <nav className="flex justify-between items-center py-8 mb-12">
     <div className="font-bold text-xl tracking-tighter flex items-center gap-2">
-      <Terminal size={20} />
+      <Code2 size={20} className="text-blue-500" />
       chris.dev
     </div>
     <div className="flex gap-4 text-sm text-neutral-400">
@@ -74,22 +82,34 @@ const Hero = () => (
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wide text-emerald-400 bg-emerald-900/30 rounded-full border border-emerald-800"
+      className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-medium tracking-wide text-blue-400 bg-blue-900/30 rounded-full border border-blue-800"
     >
-      Available for work
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+      </span>
+      Open to Frontend Roles
     </motion.div>
     
+    {/* Heading updated to Name */}
     <motion.h1 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight"
+      className="text-6xl md:text-8xl font-bold tracking-tighter mb-4 leading-tight bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent"
     >
-      Building software for the <br />
-      <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-        Real World.
-      </span>
+      {personalInfo.name}
     </motion.h1>
+
+    {/* Sub-heading for the slogan */}
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      className="text-2xl md:text-3xl font-medium text-neutral-300 mb-6"
+    >
+      Crafting experiences for <span className="text-blue-400">Web & Mobile.</span>
+    </motion.h2>
     
     <motion.p 
       initial={{ opacity: 0, y: 20 }}
@@ -106,10 +126,10 @@ const Hero = () => (
       transition={{ duration: 0.5, delay: 0.4 }}
       className="flex gap-4 mt-8"
     >
-      <a href="#work" className="bg-white text-black px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform">
-        View Projects
+      <a href="#work" className="bg-white text-black px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform flex items-center gap-2">
+        <Smartphone size={18} /> View Work
       </a>
-      <a href="mailto:your-email@example.com" className="border border-neutral-700 text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-900 transition-colors">
+      <a href={personalInfo.socials.email} className="border border-neutral-700 text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-900 transition-colors">
         Contact Me
       </a>
     </motion.div>
@@ -117,15 +137,17 @@ const Hero = () => (
 );
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => (
-  <motion.div
+  <motion.a
+    href={project.link}
+    target={project.link === "#" ? "_self" : "_blank"}
+    rel="noopener noreferrer"
     initial={{ opacity: 0, scale: 0.9 }}
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
     whileHover={{ y: -5 }}
-    className={`${project.size} group relative overflow-hidden rounded-3xl bg-neutral-900 border border-neutral-800 p-8 cursor-pointer transition-all hover:border-neutral-600`}
+    className={`${project.size} group relative overflow-hidden rounded-3xl bg-neutral-900 border border-neutral-800 p-8 cursor-pointer transition-all hover:border-neutral-600 block`}
   >
-    {/* Abstract Background Gradient */}
     <div className={`absolute -right-20 -top-20 h-80 w-80 rounded-full blur-3xl opacity-20 ${project.color} group-hover:opacity-30 transition-opacity duration-500`} />
     
     <div className="relative z-10 flex flex-col h-full justify-between min-h-[200px]">
@@ -142,37 +164,41 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         <h3 className="text-3xl font-semibold mb-2 text-white">{project.title}</h3>
         <p className="text-neutral-400 text-sm mb-4 max-w-md">{project.description}</p>
         <div className="text-xs font-mono text-neutral-500 flex items-center gap-1">
-            <Code2 size={14} />
+            {project.tech.includes("React") ? <Smartphone size={14} /> : <Layout size={14} />}
             {project.tech}
         </div>
       </div>
     </div>
-  </motion.div>
+  </motion.a>
 );
 
 const Footer = () => (
   <footer id="contact" className="mt-24 pt-12 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 gap-6">
-    <div className="text-sm">© 2025 Chris. Built with Next.js & Tailwind.</div>
+    <div className="text-sm">© 2025 Chris Bartie. Built with React & Next.js.</div>
     <div className="flex gap-6">
-      {/* Note: Update these links when you have them! */}
-      <Github size={20} className="hover:text-white cursor-pointer transition-colors" />
-      <Linkedin size={20} className="hover:text-white cursor-pointer transition-colors" />
-      <Mail size={20} className="hover:text-white cursor-pointer transition-colors" />
+      <a href={personalInfo.socials.github} target="_blank" rel="noopener noreferrer">
+        <Github size={20} className="hover:text-white cursor-pointer transition-colors" />
+      </a>
+      <a href={personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer">
+        <Linkedin size={20} className="hover:text-white cursor-pointer transition-colors" />
+      </a>
+      <a href={personalInfo.socials.email}>
+        <Mail size={20} className="hover:text-white cursor-pointer transition-colors" />
+      </a>
     </div>
   </footer>
 );
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-emerald-500 selection:text-black font-sans">
+    <div className="min-h-screen bg-black text-white selection:bg-blue-500 selection:text-white font-sans">
       <div className="max-w-6xl mx-auto px-6 pb-12">
         <Navbar />
         <Hero />
         
-        {/* Bento Grid Section */}
         <section id="work">
           <div className="flex items-center gap-2 mb-8">
-            <Code2 className="text-neutral-500" />
+            <Smartphone className="text-neutral-500" />
             <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500">Selected Works</h2>
           </div>
           
