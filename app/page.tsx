@@ -2,7 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail, Code2, Smartphone, Layout } from "lucide-react";
+import { 
+  ArrowUpRight, Github, Linkedin, Mail, Code2, Smartphone, Layout, 
+  FileText, GraduationCap, Award, Download 
+} from "lucide-react";
 
 // --- Types ---
 interface Project {
@@ -18,13 +21,13 @@ interface Project {
 
 // --- Configuration ---
 const personalInfo = {
-  name: "Chris Bartie", // Updated to full name
+  name: "Chris Bartie",
   title: "Front-End & Mobile Developer",
   bio: "I specialize in building high-quality mobile applications and responsive web interfaces. With a strong foundation in JavaScript, React, and React Native, I focus on crafting intuitive user experiences and pixel-perfect designs.",
   socials: {
     github: "https://github.com/chrisbartie31",
     linkedin: "https://www.linkedin.com/in/chris-bartie-169260275",
-    email: "mailto:chrisbartie31@gmail.com" // Updated email
+    email: "mailto:chrisbartie31@gmail.com"
   }
 };
 
@@ -53,7 +56,7 @@ const projects: Project[] = [
     id: 3,
     title: "Municipal Services Portal",
     category: "Web Interface",
-    tech: "C# / MVC",
+    tech: "C#",
     description: "A large-scale portal focusing on accessible web design and streamlined user flows for public services.",
     color: "bg-orange-600",
     size: "col-span-1 md:col-span-3",
@@ -91,7 +94,6 @@ const Hero = () => (
       Open to Frontend Roles
     </motion.div>
     
-    {/* Heading updated to Name */}
     <motion.h1 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -101,7 +103,6 @@ const Hero = () => (
       {personalInfo.name}
     </motion.h1>
 
-    {/* Sub-heading for the slogan */}
     <motion.h2
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -115,16 +116,17 @@ const Hero = () => (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="text-xl text-neutral-400 max-w-2xl leading-relaxed"
+      className="text-xl text-neutral-400 max-w-2xl leading-relaxed mb-8"
     >
       {personalInfo.bio}
     </motion.p>
 
+    {/* Buttons Row */}
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.4 }}
-      className="flex gap-4 mt-8"
+      className="flex flex-wrap gap-4 mb-12"
     >
       <a href="#work" className="bg-white text-black px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform flex items-center gap-2">
         <Smartphone size={18} /> View Work
@@ -132,6 +134,55 @@ const Hero = () => (
       <a href={personalInfo.socials.email} className="border border-neutral-700 text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-900 transition-colors">
         Contact Me
       </a>
+    </motion.div>
+
+    {/* Documents Section */}
+    <motion.div
+       initial={{ opacity: 0 }}
+       animate={{ opacity: 1 }}
+       transition={{ duration: 0.5, delay: 0.6 }}
+       className="border-t border-neutral-800 pt-8"
+    >
+        <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">Credentials & Documents</h3>
+        <div className="flex flex-wrap gap-3">
+            
+            {/* CV Button */}
+            <a 
+                href="/cv.pdf" 
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+            >
+                <FileText size={16} className="text-blue-400 group-hover:text-blue-300" />
+                <span>Curriculum Vitae</span>
+                <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+            </a>
+
+            {/* Transcript Button */}
+            <a 
+                href="/transcript.pdf" 
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+            >
+                <GraduationCap size={16} className="text-emerald-400 group-hover:text-emerald-300" />
+                <span>Academic Transcript</span>
+                <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+            </a>
+
+             {/* Testimonial Button */}
+             <a 
+                href="/testimonial.pdf" 
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+            >
+                <Award size={16} className="text-orange-400 group-hover:text-orange-300" />
+                <span>Matric Testimonial</span>
+                <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+            </a>
+
+        </div>
     </motion.div>
   </section>
 );
