@@ -31,6 +31,11 @@ const personalInfo = {
   }
 };
 
+const skills = [
+  "React", "Next.js", "React Native", "Bootstrap", "JavaScript", 
+  "Tailwind CSS", "Kotlin", "C#", ".NET", "WPF", "Git", "Figma", "HTML", "REST API"
+];
+
 const projects: Project[] = [
   {
     id: 1,
@@ -80,7 +85,7 @@ const Navbar = () => (
 );
 
 const Hero = () => (
-  <section className="mb-24">
+  <section className="mb-12">
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -240,6 +245,38 @@ const Footer = () => (
   </footer>
 );
 
+const SkillScroll = () => (
+  <section className="py-10 border-b border-neutral-800 overflow-hidden">
+    <div className="flex items-center gap-4 mb-6 px-6">
+       <div className="h-px bg-neutral-800 flex-1" />
+       <span className="text-sm font-mono text-neutral-500 uppercase tracking-widest">Technologies</span>
+       <div className="h-px bg-neutral-800 flex-1" />
+    </div>
+    
+    <div className="relative flex overflow-x-hidden group">
+      <motion.div
+        className="flex py-2 whitespace-nowrap gap-8"
+        animate={{ x: "-50%" }}
+        transition={{ 
+          repeat: Infinity, 
+          ease: "linear", 
+          duration: 50 // <--- CHANGED FROM 20 TO 50 (Slower)
+        }}
+      >
+        {/* We repeat the list twice to create the seamless loop effect */}
+        {[...skills, ...skills, ...skills].map((skill, index) => (
+          <span 
+            key={index} 
+            className="text-4xl md:text-6xl font-bold text-neutral-800 uppercase tracking-tighter hover:text-neutral-600 transition-colors cursor-default select-none"
+          >
+            {skill}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  </section>
+);
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-blue-500 selection:text-white font-sans">
@@ -247,7 +284,10 @@ export default function Home() {
         <Navbar />
         <Hero />
         
-        <section id="work">
+        {/* You missed this line! This puts the marquee on the screen */}
+        <SkillScroll />
+        
+        <section id="work" className="mt-12">
           <div className="flex items-center gap-2 mb-8">
             <Smartphone className="text-neutral-500" />
             <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500">Selected Works</h2>
