@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   ArrowUpRight, Github, Linkedin, Mail, Code2, Smartphone, Layout, 
@@ -126,7 +126,6 @@ const Hero = () => (
       {personalInfo.bio}
     </motion.p>
 
-    {/* Buttons Row */}
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -141,7 +140,6 @@ const Hero = () => (
       </a>
     </motion.div>
 
-    {/* Documents Section */}
     <motion.div
        initial={{ opacity: 0 }}
        animate={{ opacity: 1 }}
@@ -150,8 +148,6 @@ const Hero = () => (
     >
         <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">Credentials & Documents</h3>
         <div className="flex flex-wrap gap-3">
-            
-            {/* CV Button */}
             <a 
                 href="/cv.pdf" 
                 target="_blank"
@@ -163,7 +159,6 @@ const Hero = () => (
                 <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
 
-            {/* Transcript Button */}
             <a 
                 href="/transcript.pdf" 
                 target="_blank"
@@ -175,7 +170,6 @@ const Hero = () => (
                 <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
 
-             {/* Testimonial Button */}
              <a 
                 href="/testimonial.pdf" 
                 target="_blank"
@@ -186,47 +180,64 @@ const Hero = () => (
                 <span>Matric Testimonial</span>
                 <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
-
         </div>
     </motion.div>
   </section>
 );
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => (
-  <motion.a
-    href={project.link}
-    target={project.link === "#" ? "_self" : "_blank"}
-    rel="noopener noreferrer"
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    whileHover={{ y: -5 }}
-    className={`${project.size} group relative overflow-hidden rounded-3xl bg-neutral-900 border border-neutral-800 p-8 cursor-pointer transition-all hover:border-neutral-600 block`}
-  >
-    <div className={`absolute -right-20 -top-20 h-80 w-80 rounded-full blur-3xl opacity-20 ${project.color} group-hover:opacity-30 transition-opacity duration-500`} />
-    
-    <div className="relative z-10 flex flex-col h-full justify-between min-h-[200px]">
-      <div className="flex justify-between items-start">
-        <div className="flex flex-col gap-2">
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <motion.a
+      href={project.link}
+      target={project.link === "#" ? "_self" : "_blank"}
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onMouseMove={handleMouseMove}
+      className={`${project.size} group relative overflow-hidden rounded-3xl bg-neutral-900 border border-neutral-800 p-8 cursor-pointer transition-all hover:border-neutral-700 block`}
+    >
+      {/* Interactive Spotlight Layer */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.15), transparent 40%)`,
+        }}
+      />
+      
+      <div className={`absolute -right-20 -top-20 h-80 w-80 rounded-full blur-3xl opacity-10 ${project.color} group-hover:opacity-20 transition-opacity duration-500`} />
+      
+      <div className="relative z-10 flex flex-col h-full justify-between min-h-[200px]">
+        <div className="flex justify-between items-start">
             <span className="w-fit text-xs font-mono uppercase tracking-widest text-neutral-400 border border-neutral-700 px-2 py-1 rounded-full bg-black/50 backdrop-blur-md">
             {project.category}
             </span>
+          <ArrowUpRight className="text-neutral-500 group-hover:text-white group-hover:rotate-45 transition-all duration-300" />
         </div>
-        <ArrowUpRight className="text-neutral-500 group-hover:text-white group-hover:rotate-45 transition-all duration-300" />
-      </div>
-      
-      <div className="mt-8">
-        <h3 className="text-3xl font-semibold mb-2 text-white">{project.title}</h3>
-        <p className="text-neutral-400 text-sm mb-4 max-w-md">{project.description}</p>
-        <div className="text-xs font-mono text-neutral-500 flex items-center gap-1">
-            {project.tech.includes("React") ? <Smartphone size={14} /> : <Layout size={14} />}
-            {project.tech}
+        
+        <div className="mt-8">
+          <h3 className="text-3xl font-semibold mb-2 text-white">{project.title}</h3>
+          <p className="text-neutral-400 text-sm mb-4 max-w-md">{project.description}</p>
+          <div className="text-xs font-mono text-neutral-500 flex items-center gap-1">
+              {project.tech.includes("React") ? <Smartphone size={14} /> : <Layout size={14} />}
+              {project.tech}
+          </div>
         </div>
       </div>
-    </div>
-  </motion.a>
-);
+    </motion.a>
+  );
+};
 
 const Footer = () => (
   <footer id="contact" className="mt-24 pt-12 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 gap-6">
@@ -260,10 +271,9 @@ const SkillScroll = () => (
         transition={{ 
           repeat: Infinity, 
           ease: "linear", 
-          duration: 50 // <--- CHANGED FROM 20 TO 50 (Slower)
+          duration: 50 
         }}
       >
-        {/* We repeat the list twice to create the seamless loop effect */}
         {[...skills, ...skills, ...skills].map((skill, index) => (
           <span 
             key={index} 
@@ -283,8 +293,6 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-6 pb-12">
         <Navbar />
         <Hero />
-        
-        {/* You missed this line! This puts the marquee on the screen */}
         <SkillScroll />
         
         <section id="work" className="mt-12">
