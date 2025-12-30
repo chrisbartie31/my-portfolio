@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Portfolio of Chris Bartie, specializing in React, Next.js, and React Native development for high-quality web and mobile experiences.",
   openGraph: {
     title: "Chris Bartie | Developer Portfolio",
-    description: "Building intuitive user experiences and pixel-perfect designs.",
+    description: "Portfolio for Chris Bartie - Building intuitive user experiences and pixel-perfect designs.",
     url: "www.chrisbartie.dev",
     siteName: "Chris Bartie Portfolio",
     type: "website",
