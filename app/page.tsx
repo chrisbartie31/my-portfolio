@@ -33,7 +33,8 @@ const personalInfo = {
 
 const skills = [
   "React", "Next.js", "React Native", "Bootstrap", "JavaScript", 
-  "Tailwind CSS", "Kotlin", "C#", ".NET", "WPF", "Git", "Figma", "HTML", "REST API"
+  "Tailwind CSS", "Kotlin", "C#", ".NET", "WPF", "Git", "Figma", "HTML", "REST API",
+  "Angular", "TypeScript", "Python", "PrimeNG"
 ];
 
 const projects: Project[] = [
