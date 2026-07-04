@@ -2,9 +2,18 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  ArrowUpRight, Github, Linkedin, Mail, Code2, Smartphone, Layout, 
-  FileText, GraduationCap, Award, Download 
+import {
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  Code2,
+  Smartphone,
+  Layout,
+  FileText,
+  GraduationCap,
+  Award,
+  Download,
 } from "lucide-react";
 
 // --- Types ---
@@ -27,14 +36,29 @@ const personalInfo = {
   socials: {
     github: "https://github.com/chrisbartie31",
     linkedin: "https://www.linkedin.com/in/chris-bartie-169260275",
-    email: "mailto:chrisbartie31@gmail.com"
-  }
+    email: "mailto:chrisbartie31@gmail.com",
+  },
 };
 
 const skills = [
-  "React", "Next.js", "React Native", "Bootstrap", "JavaScript", 
-  "Tailwind CSS", "Kotlin", "C#", ".NET", "WPF", "Git", "Figma", "HTML", "REST API",
-  "Angular", "TypeScript", "Python", "PrimeNG"
+  "React",
+  "Next.js",
+  "React Native",
+  "Bootstrap",
+  "JavaScript",
+  "Tailwind CSS",
+  "Kotlin",
+  "C#",
+  ".NET",
+  "WPF",
+  "Git",
+  "Figma",
+  "HTML",
+  "REST API",
+  "Angular",
+  "TypeScript",
+  "Python",
+  "PrimeNG",
 ];
 
 const projects: Project[] = [
@@ -43,7 +67,8 @@ const projects: Project[] = [
     title: "Brightsteps",
     category: "Mobile Engineering",
     tech: "React Native",
-    description: "A cross-platform mobile application connecting tutors and students. Features a custom-built scheduling interface and real-time state management.",
+    description:
+      "A cross-platform mobile application connecting tutors and students. Features a custom-built scheduling interface and real-time state management.",
     color: "bg-blue-600",
     size: "col-span-1 md:col-span-2",
     link: "https://github.com/chrisbartie31/BrightSteps",
@@ -53,7 +78,8 @@ const projects: Project[] = [
     title: "Recipe Manager",
     category: "UI Architecture",
     tech: "C# / WPF",
-    description: "Designing complex desktop interfaces. This project focuses on efficient data binding and a clean, user-friendly visual layout.",
+    description:
+      "Designing complex desktop interfaces. This project focuses on efficient data binding and a clean, user-friendly visual layout.",
     color: "bg-emerald-600",
     size: "col-span-1",
     link: "https://github.com/chrisbartie31/recipe_manager",
@@ -63,10 +89,11 @@ const projects: Project[] = [
     title: "Municipal Services Portal",
     category: "Web Interface",
     tech: "C#",
-    description: "A large-scale portal focusing on accessible web design and streamlined user flows for public services.",
+    description:
+      "A large-scale portal focusing on accessible web design and streamlined user flows for public services.",
     color: "bg-orange-600",
     size: "col-span-1 md:col-span-3",
-    link: "https://github.com/chrisbartie31/municipality_portal", 
+    link: "https://github.com/chrisbartie31/municipality_portal",
   },
 ];
 
@@ -79,8 +106,12 @@ const Navbar = () => (
       chris.dev
     </div>
     <div className="flex gap-4 text-sm text-neutral-400">
-      <a href="#work" className="hover:text-white transition-colors">Work</a>
-      <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+      <a href="#work" className="hover:text-white transition-colors">
+        Work
+      </a>
+      <a href="#contact" className="hover:text-white transition-colors">
+        Contact
+      </a>
     </div>
   </nav>
 );
@@ -99,8 +130,8 @@ const Hero = () => (
       </span>
       Open to Frontend Roles
     </motion.div>
-    
-    <motion.h1 
+
+    <motion.h1
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -115,10 +146,11 @@ const Hero = () => (
       transition={{ duration: 0.5, delay: 0.1 }}
       className="text-2xl md:text-3xl font-medium text-neutral-300 mb-6"
     >
-      Crafting experiences for <span className="text-blue-400">Web & Mobile.</span>
+      Crafting experiences for{" "}
+      <span className="text-blue-400">Web & Mobile.</span>
     </motion.h2>
-    
-    <motion.p 
+
+    <motion.p
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -127,66 +159,115 @@ const Hero = () => (
       {personalInfo.bio}
     </motion.p>
 
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.4 }}
       className="flex flex-wrap gap-4 mb-12"
     >
-      <a href="#work" className="bg-white text-black px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform flex items-center gap-2">
+      <a
+        href="#work"
+        className="bg-white text-black px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform flex items-center gap-2"
+      >
         <Smartphone size={18} /> View Work
       </a>
-      <a href={personalInfo.socials.email} className="border border-neutral-700 text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-900 transition-colors">
+      <a
+        href={personalInfo.socials.email}
+        className="border border-neutral-700 text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-900 transition-colors"
+      >
         Contact Me
       </a>
     </motion.div>
 
     <motion.div
-       initial={{ opacity: 0 }}
-       animate={{ opacity: 1 }}
-       transition={{ duration: 0.5, delay: 0.6 }}
-       className="border-t border-neutral-800 pt-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+      className="border-t border-neutral-800 pt-8"
     >
-        <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">Credentials & Documents</h3>
-        <div className="flex flex-wrap gap-3">
-            <a 
-                href="/cv.pdf" 
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
-            >
-                <FileText size={16} className="text-blue-400 group-hover:text-blue-300" />
-                <span>Curriculum Vitae</span>
-                <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
-            </a>
+      <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">
+        Credentials & Documents
+      </h3>
+      <div className="flex flex-wrap gap-3">
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+        >
+          <FileText
+            size={16}
+            className="text-blue-400 group-hover:text-blue-300"
+          />
+          <span>Curriculum Vitae</span>
+          <Download
+            size={14}
+            className="opacity-0 group-hover:opacity-100 transition-opacity ml-1"
+          />
+        </a>
 
-            <a 
-                href="/transcript.pdf" 
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
-            >
-                <GraduationCap size={16} className="text-emerald-400 group-hover:text-emerald-300" />
-                <span>Academic Transcript</span>
-                <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
-            </a>
+        <a
+          href="/transcript.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+        >
+          <GraduationCap
+            size={16}
+            className="text-emerald-400 group-hover:text-emerald-300"
+          />
+          <span>Academic Transcript</span>
+          <Download
+            size={14}
+            className="opacity-0 group-hover:opacity-100 transition-opacity ml-1"
+          />
+        </a>
 
-             <a 
-                href="/testimonial.pdf" 
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
-            >
-                <Award size={16} className="text-orange-400 group-hover:text-orange-300" />
-                <span>Matric Testimonial</span>
-                <Download size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
-            </a>
-        </div>
+        <a
+          href="/degree.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+        >
+          <GraduationCap
+            size={16}
+            className="text-purple-400 group-hover:text-purple-300"
+          />
+          <span>Copy of Degree</span>
+          <Download
+            size={14}
+            className="opacity-0 group-hover:opacity-100 transition-opacity ml-1"
+          />
+        </a>
+
+        <a
+          href="/testimonial.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-lg text-sm text-neutral-300 hover:text-white hover:border-neutral-600 transition-all group"
+        >
+          <Award
+            size={16}
+            className="text-orange-400 group-hover:text-orange-300"
+          />
+          <span>Matric Testimonial</span>
+          <Download
+            size={14}
+            className="opacity-0 group-hover:opacity-100 transition-opacity ml-1"
+          />
+        </a>
+      </div>
     </motion.div>
   </section>
 );
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -216,23 +297,33 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.15), transparent 40%)`,
         }}
       />
-      
-      <div className={`absolute -right-20 -top-20 h-80 w-80 rounded-full blur-3xl opacity-10 ${project.color} group-hover:opacity-20 transition-opacity duration-500`} />
-      
+
+      <div
+        className={`absolute -right-20 -top-20 h-80 w-80 rounded-full blur-3xl opacity-10 ${project.color} group-hover:opacity-20 transition-opacity duration-500`}
+      />
+
       <div className="relative z-10 flex flex-col h-full justify-between min-h-[200px]">
         <div className="flex justify-between items-start">
-            <span className="w-fit text-xs font-mono uppercase tracking-widest text-neutral-400 border border-neutral-700 px-2 py-1 rounded-full bg-black/50 backdrop-blur-md">
+          <span className="w-fit text-xs font-mono uppercase tracking-widest text-neutral-400 border border-neutral-700 px-2 py-1 rounded-full bg-black/50 backdrop-blur-md">
             {project.category}
-            </span>
+          </span>
           <ArrowUpRight className="text-neutral-500 group-hover:text-white group-hover:rotate-45 transition-all duration-300" />
         </div>
-        
+
         <div className="mt-8">
-          <h3 className="text-3xl font-semibold mb-2 text-white">{project.title}</h3>
-          <p className="text-neutral-400 text-sm mb-4 max-w-md">{project.description}</p>
+          <h3 className="text-3xl font-semibold mb-2 text-white">
+            {project.title}
+          </h3>
+          <p className="text-neutral-400 text-sm mb-4 max-w-md">
+            {project.description}
+          </p>
           <div className="text-xs font-mono text-neutral-500 flex items-center gap-1">
-              {project.tech.includes("React") ? <Smartphone size={14} /> : <Layout size={14} />}
-              {project.tech}
+            {project.tech.includes("React") ? (
+              <Smartphone size={14} />
+            ) : (
+              <Layout size={14} />
+            )}
+            {project.tech}
           </div>
         </div>
       </div>
@@ -241,17 +332,39 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 };
 
 const Footer = () => (
-  <footer id="contact" className="mt-24 pt-12 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 gap-6">
-    <div className="text-sm">© 2025 Chris Bartie. Built with React & Next.js.</div>
+  <footer
+    id="contact"
+    className="mt-24 pt-12 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 gap-6"
+  >
+    <div className="text-sm">
+      © 2025 Chris Bartie. Built with React & Next.js.
+    </div>
     <div className="flex gap-6">
-      <a href={personalInfo.socials.github} target="_blank" rel="noopener noreferrer">
-        <Github size={20} className="hover:text-white cursor-pointer transition-colors" />
+      <a
+        href={personalInfo.socials.github}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Github
+          size={20}
+          className="hover:text-white cursor-pointer transition-colors"
+        />
       </a>
-      <a href={personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer">
-        <Linkedin size={20} className="hover:text-white cursor-pointer transition-colors" />
+      <a
+        href={personalInfo.socials.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Linkedin
+          size={20}
+          className="hover:text-white cursor-pointer transition-colors"
+        />
       </a>
       <a href={personalInfo.socials.email}>
-        <Mail size={20} className="hover:text-white cursor-pointer transition-colors" />
+        <Mail
+          size={20}
+          className="hover:text-white cursor-pointer transition-colors"
+        />
       </a>
     </div>
   </footer>
@@ -260,24 +373,26 @@ const Footer = () => (
 const SkillScroll = () => (
   <section className="py-10 border-b border-neutral-800 overflow-hidden">
     <div className="flex items-center gap-4 mb-6 px-6">
-       <div className="h-px bg-neutral-800 flex-1" />
-       <span className="text-sm font-mono text-neutral-500 uppercase tracking-widest">Technologies</span>
-       <div className="h-px bg-neutral-800 flex-1" />
+      <div className="h-px bg-neutral-800 flex-1" />
+      <span className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
+        Technologies
+      </span>
+      <div className="h-px bg-neutral-800 flex-1" />
     </div>
-    
+
     <div className="relative flex overflow-x-hidden group">
       <motion.div
         className="flex py-2 whitespace-nowrap gap-8"
         animate={{ x: "-50%" }}
-        transition={{ 
-          repeat: Infinity, 
-          ease: "linear", 
-          duration: 50 
+        transition={{
+          repeat: Infinity,
+          ease: "linear",
+          duration: 50,
         }}
       >
         {[...skills, ...skills, ...skills].map((skill, index) => (
-          <span 
-            key={index} 
+          <span
+            key={index}
             className="text-4xl md:text-6xl font-bold text-neutral-800 uppercase tracking-tighter hover:text-neutral-600 transition-colors cursor-default select-none"
           >
             {skill}
@@ -295,13 +410,15 @@ export default function Home() {
         <Navbar />
         <Hero />
         <SkillScroll />
-        
+
         <section id="work" className="mt-12">
           <div className="flex items-center gap-2 mb-8">
             <Smartphone className="text-neutral-500" />
-            <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500">Selected Works</h2>
+            <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500">
+              Selected Works
+            </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
             {projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
